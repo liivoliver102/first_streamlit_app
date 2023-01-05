@@ -27,3 +27,8 @@ streamlit.header("Fruityvice Fruit Advice!")
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+# changes the json output so that aligns columns and stuff an takes comas, away 
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# puts a table around it
+streamlit.dataframe(fruityvice_normalized)
